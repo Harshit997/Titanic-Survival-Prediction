@@ -1,78 +1,132 @@
 # 🚢 Titanic Survival Prediction
 
-A Machine Learning project that predicts whether a passenger survived the Titanic disaster based on demographic and travel features. This project demonstrates end-to-end ML workflow including data preprocessing, feature engineering, model training, and evaluation.
+A Machine Learning classification project that predicts whether a passenger survived the Titanic disaster based on demographic and travel-related features. The project includes data preprocessing, visualization, and model training using Logistic Regression.
 
 ---
 
 ## 📌 Problem Statement
 
-The goal is to build a classification model that predicts survival (0 = No, 1 = Yes) of passengers on the Titanic using features like age, sex, ticket class, fare, etc.
+The goal is to build a classification model that predicts survival (`0 = No`, `1 = Yes`) using features such as:
+
+* passenger class
+* sex
+* age
+* number of siblings/spouses
+* number of parents/children
+* fare
+* embarkation port
 
 ---
 
 ## 📂 Dataset
 
-* Dataset: Titanic dataset (commonly used in ML competitions)
-* Features include:
+* Dataset: Titanic dataset
+* Target variable: `Survived`
 
-  * Passenger demographics (Age, Sex)
-  * Ticket details (Pclass, Fare)
-  * Family information (SibSp, Parch)
-  * Embarkation port (Embarked)
+### Features used:
 
----
+* Pclass
+* Sex
+* Age
+* SibSp
+* Parch
+* Fare
+* Embarked
 
-## ⚙️ Workflow
+### Dropped columns:
 
-### 1. Data Preprocessing
-
-* Handled missing values:
-
-  * Age → filled using central tendency
-  * Embarked → filled with most frequent value
-* Dropped irrelevant features:
-
-  * Name, Ticket, Cabin
-* Converted categorical variables using encoding techniques
+* Name
+* Ticket
+* Cabin
+* PassengerId
 
 ---
 
-### 2. Feature Engineering
+## 🔍 Exploratory Data Analysis (EDA)
 
-* Created meaningful structured dataset from raw inputs
-* Prepared features suitable for ML models
+Performed analysis to understand feature relationships:
+
+* Count plots:
+
+  * survival distribution
+  * survival vs sex
+  * survival vs passenger class
+* Histograms:
+
+  * age distribution
+  * fare distribution
+* Heatmap:
+
+  * correlation between numerical features
+
+These helped identify key patterns such as higher survival rates for females and first-class passengers.
 
 ---
 
-### 3. Model Training
+## ⚙️ Data Preprocessing
 
-Multiple models were trained and compared:
+### 1. Handling Missing Values
+
+* `Age` filled using central tendency
+* `Embarked` filled with most frequent value
+
+---
+
+### 2. Encoding
+
+* Converted categorical variables using encoding techniques:
+
+  * Sex
+  * Embarked
+
+---
+
+### 3. Feature Separation
+
+* `X` → features
+* `y` → target (`Survived`)
+
+---
+
+### 4. Train-Test Split
+
+* 80% training
+* 20% testing
+* `random_state = 42`
+
+---
+
+### 5. Feature Scaling
+
+* Applied `StandardScaler` on numerical features
+
+---
+
+## 🤖 Model Training
+
+### Model Used:
 
 * Logistic Regression
-* K-Nearest Neighbors (KNN)
-* Naive Bayes
-* Decision Tree
-* Support Vector Machine (SVM)
+
+The model was trained on processed data and used to classify survival outcomes.
 
 ---
 
-### 4. Evaluation Metrics
+## 📊 Model Evaluation
 
-Models were evaluated using:
+### Metrics Used:
 
 * Accuracy Score
 * F1 Score
 
-Best performance achieved:
-
-* **Accuracy:** ~84%
-* **F1 Score:** ~82%
+These metrics evaluate overall classification performance and balance between precision and recall.
 
 ---
 
-## 📊 Results
+## 📈 Results
 
-The models performed well on the test dataset, with Logistic Regression providing a strong balance between simplicity and performance.
+* The model achieved strong performance on the test dataset
+* Features like sex, passenger class, and fare showed significant influence on survival
 
 ---
 
@@ -80,56 +134,42 @@ The models performed well on the test dataset, with Logistic Regression providin
 
 * Python
 * Pandas, NumPy
-* Scikit-learn
 * Matplotlib, Seaborn
-* Jupyter Notebook
+* Scikit-learn
 
 ---
 
 ## 📁 Project Structure
 
-```
-├── model.ipynb        # Main notebook (EDA, preprocessing, training)
-├── dataset.csv        # Dataset used
-├── README.md          # Project documentation
+```id="t3f9xa"
+model.ipynb      # EDA, preprocessing, and model training
+README.md        # Documentation
 ```
 
 ---
 
 ## 🚀 Key Learnings
 
-* Importance of data cleaning and preprocessing
-* Handling missing values effectively
-* Comparing multiple ML models
-* Evaluating models using appropriate metrics
+* Handling missing values in real datasets
+* Encoding categorical variables for ML models
+* Applying logistic regression for classification problems
+* Using evaluation metrics like accuracy and F1 score
 
 ---
 
 ## ⚠️ Limitations
 
-* Basic evaluation metrics used (no cross-validation)
-* Limited feature engineering
-* No hyperparameter tuning applied
+* Only one model used (Logistic Regression)
+* Limited evaluation metrics
+* No cross-validation or hyperparameter tuning
 
 ---
 
 ## 🔮 Future Improvements
 
-* Add cross-validation for robust evaluation
-* Perform hyperparameter tuning (GridSearchCV)
-* Include ROC-AUC and confusion matrix analysis
-* Build a deployment interface (Streamlit / Web App)
-
----
-
-## 🤝 Contributing
-
-Feel free to fork this repository and improve the project!
-
----
-
-## 📬 Contact
-
-If you have any suggestions or feedback, feel free to reach out.
+* Compare multiple classification models
+* Add confusion matrix and ROC-AUC analysis
+* Perform feature engineering
+* Use cross-validation for better generalization
 
 ---
